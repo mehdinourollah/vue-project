@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex flex-col bg-white rounded-md p-[3%]">
+    <div class="d-flex flex-col bg-white rounded-md p-2 ">
         <div class="row">
             {{ top_currency.code }} {{ formattedNumber(top_amount) }}
         </div>
