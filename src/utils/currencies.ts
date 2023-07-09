@@ -9,14 +9,14 @@ const instance = axios.create({
 
 export const get_currencies = async (): Promise<ICurrency> => {
     const response = await instance.get('currencies');
-    console.log(response.data);
+    console.log(response.data.data);
     return response.data.data as ICurrency;
 }
 
 export const get_rates = async (base = 'EUR'): Promise<ICurrencyRate> => {
     const response = await instance.get(`latest?base_currency=${base}`);
-    console.log(response.data);
-    return response.data.data;
+    console.log(response.data.data);
+    return response.data.data as ICurrencyRate;
 }
 
 
