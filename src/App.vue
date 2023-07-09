@@ -1,11 +1,21 @@
 <script setup lang="ts">
 import Calculator from './components/Calculator.vue';
+import Foo from './components/Foo.vue';
 
 </script>
 
 <template>
+  <!-- <Foo /> -->
   <Suspense>
-    <Calculator />
+    <template #fallback>
+      <div>Loading...</div>
+    </template>
+
+    <template #default>
+      <Calculator />
+    </template>
+
+
 
   </Suspense>
 </template>

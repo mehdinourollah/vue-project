@@ -1,4 +1,4 @@
-import type { ICurrency, ICurrencyRate } from "@/interfaces";
+import type { ICurrency, ICurrencyRate, TCurrency } from "@/interfaces";
 import axios from "axios";
 
 const instance = axios.create({
@@ -19,5 +19,22 @@ export const get_rates = async (base = 'EUR'): Promise<ICurrencyRate> => {
     return response.data.data as ICurrencyRate;
 }
 
+export const get_formatted_currency = async (): Promise<TCurrency[]> => {
+    try {
+        let currency_resp = await get_currencies();
+        let rates_resp = await get_rates();
 
+        let formatted_cur_arr = Object.values(currency_resp).map((value) => {
+            return { name: value.name, code: value.code, rate: rates_resp[value.code] }
+        })
+        // array to object
+        // let formatted_cur_obj = Object.assign({}, ...formatted_cur_arr.map((item) => ({ [item.code]: item })));
+
+        return formatted_cur_arr as TCurrency[];
+    }
+    catch (err) {
+        console.log(err);
+        return [] as TCurrency[];
+    }
+}
 

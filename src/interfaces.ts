@@ -20,7 +20,7 @@ export type TCurrency = {
     name: string,
     code: string,
     rate: number,
-}
+} ;
 
 let b: ICurrencyRate = {
     "AED": 1.0,
@@ -49,4 +49,11 @@ let a: ICurrency = {
         "name_plural": "Afghan Afghanis"
     },
 }
+
+let c: TCurrency = {
+    name: "United Arab Emirates Dirham",
+    code: "AED",
+    rate: 1.0,
+}
+
 
